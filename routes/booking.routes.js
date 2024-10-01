@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require('../middleware/authorization'); // Middleware de autenticación
 
-const { createBooking, findToday, bookDetails, updateRoom, deleteBook, 
+const { createInitialBookings,createBooking, findToday, bookDetails, updateRoom, deleteBook, 
     hotelFilter, datesFilter, roomClassFilter, paidStatus, qtySearch } = require("../controllers/booking.controller");
 
 const handleQueryParams = (req, res, next) => {
@@ -23,6 +23,7 @@ const handleQueryParams = (req, res, next) => {
     }
 };
 
+router.get("/init", createInitialBookings); // Filtros de búsqueda para reservas
 router.post("/", auth, createBooking); // Crear reserva
 router.get("/", auth, handleQueryParams); // Filtros de búsqueda para reservas
 router.get("/:id", auth, bookDetails); // Detalles de una reserva por ID

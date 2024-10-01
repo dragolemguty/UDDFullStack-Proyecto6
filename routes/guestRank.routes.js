@@ -5,7 +5,7 @@ const auth = require('../middleware/authorization'); // Middleware de autenticac
 const {  createInitialGuestRanks, findAllGuestRanks, findGuestRankById, updateGuestRank, deleteGuestRank  } = require("../controllers/guestRank.controller");
 
 // Rutas para Guest
-router.get("/init", auth, createInitialGuestRanks); // Inicializar guestRank
+router.get("/init", createInitialGuestRanks); // Inicializar guestRank
 router.get("/", auth, findAllGuestRanks); // Obtener todos los guestRank
 router.get("/:id", auth, findGuestRankById); // Obtener un guestRank por ID
 router.put("/:id", auth, updateGuestRank); // Actualizar un guestRank

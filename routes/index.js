@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { swaggerDocs, swaggerUi } = require("../swaggerConfig");
+
 
 const bookingRouter = require("./booking.routes");
 const roomRouter = require("./room.routes");
@@ -18,7 +20,11 @@ router.use("/ranks", guestRankRouter); // Rutas para ranks
 router.use("/", authRoutes);
 router.use("/users", userRoutes);
 
+// Ruta para la documentación de Swagger
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 module.exports = router;
+
 
 
 

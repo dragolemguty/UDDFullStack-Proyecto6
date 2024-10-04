@@ -9,9 +9,9 @@ const createInitialBookings = async (req, res) => {
   try {
     const bookingsData = [
       {
-        id_guest: 1,
+        id_guest: "66ff4b87db91ff9e0265a6f4",
         id_booking: 12345,
-        id_room_array: [3, 5],
+        id_room_array: ["66fb61daa1fafb57a4a3bb1b", "66fb61daa1fafb57a4a3bb1d"],
         booking_date: '2024-07-12',
         arrival_date: '2024-07-14',
         departure_date: '2024-07-15',
@@ -23,9 +23,9 @@ const createInitialBookings = async (req, res) => {
         last_update_datetime: '2024-07-12 00:00:00'
       },
       {
-        id_guest: 1,
+        id_guest: "66ff4b87db91ff9e0265a6f4",
         id_booking: 2,
-        id_room_array: [5],
+        id_room_array: ["66fb61daa1fafb57a4a3bb1d"],
         booking_date: '2024-07-12',
         arrival_date: '2024-08-14',
         departure_date: '2024-08-17',
@@ -37,9 +37,9 @@ const createInitialBookings = async (req, res) => {
         last_update_datetime: '2024-07-12 00:00:00'
       },
       {
-        id_guest: 2,
+        id_guest: "66ff4b87db91ff9e0265a6f5",
         id_booking: 3,
-        id_room_array: [2],
+        id_room_array: ["66fb61daa1fafb57a4a3bb1a"],
         booking_date: '2024-07-12',
         arrival_date: '2024-08-24',
         departure_date: '2024-08-26',
@@ -51,9 +51,9 @@ const createInitialBookings = async (req, res) => {
         last_update_datetime: '2024-07-12 00:00:00'
       },
       {
-        id_guest: 1,
+        id_guest: "66ff4b87db91ff9e0265a6f4",
         id_booking: 4,
-        id_room_array: [1],
+        id_room_array: ["66fb61daa1fafb57a4a3bb19"],
         booking_date: '2024-07-12',
         arrival_date: '2024-08-29',
         departure_date: '2024-08-30',
@@ -65,9 +65,9 @@ const createInitialBookings = async (req, res) => {
         last_update_datetime: '2024-07-12 00:00:00'
       },
       {
-        id_guest: 3,
+        id_guest: "66ff4b87db91ff9e0265a6f6",
         id_booking: 5,
-        id_room_array: [2],
+        id_room_array: ["66fb61daa1fafb57a4a3bb1a"],
         booking_date: '2024-07-12',
         arrival_date: '2024-12-23',
         departure_date: '2024-12-28',
@@ -79,9 +79,9 @@ const createInitialBookings = async (req, res) => {
         last_update_datetime: '2024-07-12 00:00:00'
       },
       {
-        id_guest: 1,
+        id_guest: "66ff4b87db91ff9e0265a6f4",
         id_booking: 6,
-        id_room_array: [4, 5],
+        id_room_array: ["66fb61daa1fafb57a4a3bb1c", "66fb61daa1fafb57a4a3bb1d"],
         booking_date: '2024-07-12',
         arrival_date: '2024-12-27',
         departure_date: '2024-12-29',

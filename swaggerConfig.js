@@ -22,83 +22,83 @@ const swaggerOptions = {
         ],
         components: {
             schemas: {
-                Booking: {
-                    type: "object",
-                    required: [
-                        "id_guest",
-                        "id_booking",
-                        "id_room_array",
-                        "booking_date",
-                        "arrival_date",
-                        "departure_date",
-                        "nights_qty",
-                        "guests_qty",
-                        "last_update_datetime"
-                    ],
-                    properties: {
-                        id_guest: {
-                        type: "string",
-                        description: "ID del huésped (referencia a Guest)"
-                        },
-                        id_booking: {
-                        type: "integer",
-                        description: "ID de la reserva"
-                        },
-                        id_room_array: {
-                        type: "array",
-                        items: {
-                            type: "object",
-                            properties: {
-                            id_room: {
-                                type: "string",
-                                description: "ID de la habitación (referencia a Room)"
-                            }
-                            }
-                        },
-                        description: "Array con los IDs de las habitaciones reservadas"
-                        },
-                        booking_date: {
-                        type: "string",
-                        format: "date-time",
-                        description: "Fecha de creación de la reserva"
-                        },
-                        arrival_date: {
-                        type: "string",
-                        format: "date",
-                        description: "Fecha de llegada"
-                        },
-                        departure_date: {
-                        type: "string",
-                        format: "date",
-                        description: "Fecha de salida"
-                        },
-                        nights_qty: {
-                        type: "integer",
-                        description: "Cantidad de noches reservadas"
-                        },
-                        guests_qty: {
-                        type: "integer",
-                        description: "Cantidad de huéspedes"
-                        },
-                        is_modified: {
-                        type: "boolean",
-                        description: "Si la reserva ha sido modificada"
-                        },
-                        is_paid: {
-                        type: "boolean",
-                        description: "Si la reserva ha sido pagada"
-                        },
-                        is_cancelled: {
-                        type: "boolean",
-                        description: "Si la reserva ha sido cancelada"
-                        },
-                        last_update_datetime: {
-                        type: "string",
-                        format: "date-time",
-                        description: "Fecha y hora de la última actualización"
-                        }
-                    }
-                    },
+              Booking: {
+                  type: "object",
+                  required: [
+                      "id_guest",
+                      "id_room_array",
+                      "arrival_date",
+                      "departure_date",
+                      "guests_qty"
+                  ],
+                  properties: {
+                      id_guest: {
+                          type: "string",
+                          description: "ID del huésped (referencia a Guest)",
+                           example: "66ff4b87db91ff9e0265a6f4"
+                      },
+                      id_booking: {
+                          type: "integer",
+                          description: "ID de la reserva"
+                      },
+                      id_room_array: {
+                          type: "array",
+                          items: {
+                              type: "string",
+                              description: "ID de la habitación (referencia a Room)"
+                          },
+                          description: "Array con los IDs de las habitaciones reservadas",
+                          example: [
+                              "66fb61daa1fafb57a4a3bb1c",
+                              "66fb61daa1fafb57a4a3bb19"
+                          ]
+                      },
+                      booking_date: {
+                          type: "string",
+                          format: "date-time",
+                          description: "Fecha de creación de la reserva"
+                          
+                      },
+                      arrival_date: {
+                          type: "string",
+                          format: "date",
+                          description: "Fecha de llegada",
+                          example: "2024-07-17"
+                      },
+                      departure_date: {
+                          type: "string",
+                          format: "date",
+                          description: "Fecha de salida",
+                          example: "2024-07-20"
+                      },
+                      nights_qty: {
+                          type: "integer",
+                          description: "Cantidad de noches reservadas"
+                      },
+                      guests_qty: {
+                          type: "integer",
+                          description: "Cantidad de huéspedes",
+                          example: 4
+                      },
+                      is_modified: {
+                          type: "boolean",
+                          description: "Si la reserva ha sido modificada"
+                      },
+                      is_paid: {
+                          type: "boolean",
+                          description: "Si la reserva ha sido pagada"
+                      },
+                      is_cancelled: {
+                          type: "boolean",
+                          description: "Si la reserva ha sido cancelada"
+                      },
+                      last_update_datetime: {
+                          type: "string",
+                          format: "date-time",
+                          description: "Fecha y hora de la última actualización"
+                      }
+                  }
+              },
                 Room: {
                     type: "object",
                     required: [

@@ -1,11 +1,12 @@
 const Guest = require('../models/guest'); // Importamos el modelo de Guest
 const User = require('../models/user');
+const mongoose = require("mongoose");
 
 // Crear invitados (guests) y guardarlos en la base de datos (solo si es necesario para inicializar)
 const createInitialGuests = async (req, res) => {
   try {
     const guestsData = [
-      {
+      { _id: new mongoose.Types.ObjectId("66ff4b87db91ff9e0265a6f4"),
         id_guest: 1,
         guest_name: 'JuanJo',
         guest_lastname: 'Gutierrez',
@@ -19,7 +20,7 @@ const createInitialGuests = async (req, res) => {
         guest_details: null,
         user: "66fb68ba3d5eb488200c7917"
       },
-      {
+      { _id: new mongoose.Types.ObjectId("66ff4b87db91ff9e0265a6f5"),
         id_guest: 2,
         guest_name: 'Daniela',
         guest_lastname: 'Lopez',
@@ -33,7 +34,7 @@ const createInitialGuests = async (req, res) => {
         guest_details: null,
         user: "66fb68ba3d5eb488200c7917"
       },
-      {
+      { _id: new mongoose.Types.ObjectId("66ff4b87db91ff9e0265a6f6"),
         id_guest: 3,
         guest_name: 'Constanza',
         guest_lastname: 'Ferreyra',

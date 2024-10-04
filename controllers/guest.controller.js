@@ -1,4 +1,5 @@
 const Guest = require('../models/guest'); // Importamos el modelo de Guest
+const User = require('../models/user');
 
 // Crear invitados (guests) y guardarlos en la base de datos (solo si es necesario para inicializar)
 const createInitialGuests = async (req, res) => {
@@ -15,7 +16,8 @@ const createInitialGuests = async (req, res) => {
         guest_adress: null,
         register_date: '2024-07-12',
         guest_rank: 'Standard',
-        guest_details: null
+        guest_details: null,
+        user: "66fb68ba3d5eb488200c7917"
       },
       {
         id_guest: 2,
@@ -28,7 +30,8 @@ const createInitialGuests = async (req, res) => {
         guest_adress: null,
         register_date: '2024-07-12',
         guest_rank: 'VIP',
-        guest_details: null
+        guest_details: null,
+        user: "66fb68ba3d5eb488200c7917"
       },
       {
         id_guest: 3,
@@ -41,7 +44,8 @@ const createInitialGuests = async (req, res) => {
         guest_adress: null,
         register_date: '2024-07-12',
         guest_rank: 'Aspiracional',
-        guest_details: null
+        guest_details: null,
+        user: "66fb68ba3d5eb488200c7917"
       }
     ];
 
@@ -51,6 +55,40 @@ const createInitialGuests = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error creando los invitados' });
+  }
+};
+
+const createGuest = async (req, res) => {
+  try {
+    // Obtiene el user_id desde el token decodificado (middleware de autenticación)
+    const userId = req.user.id;
+
+    // Datos necesarios para crear el nuevo Guest
+    const { id_guest, guest_name, guest_lastname, gender, birth_date, contact_number, DNI_number, guest_adress, register_date, guest_rank, guest_details } = req.body;
+
+    // Crear el nuevo guest y asociarlo al usuario autenticado
+    const nuevoGuest = await Guest.create({
+      id_guest,
+      guest_name,
+      guest_lastname,
+      gender,
+      birth_date,
+      contact_number,
+      DNI_number,
+      guest_adress,
+      register_date,
+      guest_rank,
+      guest_details,
+      user: userId
+    });
+
+    res.status(201).json({
+      message: "Guest creado exitosamente",
+      guest: nuevoGuest
+    });
+  } catch (error) {
+    console.error("Error creando guest:", error);
+    res.status(500).json({ message: "Error creando el guest" });
   }
 };
 
@@ -125,4 +163,4 @@ const deleteGuest = async (req, res) => {
   }
 };
 
-module.exports = { createInitialGuests, findAllGuests, findGuestById, updateGuest, deleteGuest };
+module.exports = { createGuest, createInitialGuests, findAllGuests, findGuestById, updateGuest, deleteGuest };

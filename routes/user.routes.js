@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require('../middleware/authorization');
 
-const { findAll, findOne, create, update, remove } = require("../controllers/user.controller");
+const {createInitialUser, findAll, findOne, create, update, remove } = require("../controllers/user.controller");
 
 /**
  * @swagger
@@ -10,6 +10,18 @@ const { findAll, findOne, create, update, remove } = require("../controllers/use
  *   name: User
  *   description: Endpoints para la gestión de usuarios
  */
+
+/**
+ * @swagger
+ * /users/init:
+ *   get:
+ *     summary: Generar usuario inicial
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Genera usuario 1
+ */
+router.get("/init", createInitialUser);
 
 /**
  * @swagger

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require('../middleware/authorization');
 
-const { createInitialGuests, findAllGuests, findGuestById, updateGuest, deleteGuest } = require("../controllers/guest.controller");
+const {createGuest, createInitialGuests, findAllGuests, findGuestById, updateGuest, deleteGuest } = require("../controllers/guest.controller");
 
 /**
  * @swagger
@@ -22,6 +22,96 @@ const { createInitialGuests, findAllGuests, findGuestById, updateGuest, deleteGu
  *         description: Huéspedes inicializados con éxito
  */
 router.get("/init", createInitialGuests);
+
+
+/**
+ * @swagger
+ * /guest:
+ *   post:
+ *     summary: Crea un nuevo guest relacionado con el usuario autenticado
+ *     tags: [Guest]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - id_guest
+ *               - guest_name
+ *               - guest_lastname
+ *               - gender
+ *               - birth_date
+ *               - register_date
+ *               - guest_rank
+ *             properties:
+ *               id_guest:
+ *                 type: integer
+ *                 description: ID único del huésped
+ *                 example: 4
+ *               guest_name:
+ *                 type: string
+ *                 description: Nombre del huésped
+ *                 example: "Carlos"
+ *               guest_lastname:
+ *                 type: string
+ *                 description: Apellido del huésped
+ *                 example: "Ramirez"
+ *               gender:
+ *                 type: string
+ *                 description: Género del huésped
+ *                 example: "M"
+ *               birth_date:
+ *                 type: string
+ *                 format: date
+ *                 description: Fecha de nacimiento del huésped
+ *                 example: "1990-02-15"
+ *               contact_number:
+ *                 type: string
+ *                 description: Número de contacto del huésped (opcional)
+ *                 example: "123456789"
+ *               DNI_number:
+ *                 type: string
+ *                 description: Número de DNI del huésped (opcional)
+ *                 example: "987654321"
+ *               guest_adress:
+ *                 type: string
+ *                 description: Dirección del huésped (opcional)
+ *                 example: "Calle Falsa 123"
+ *               register_date:
+ *                 type: string
+ *                 format: date
+ *                 description: Fecha de registro del huésped
+ *                 example: "2024-10-01"
+ *               guest_rank:
+ *                 type: string
+ *                 description: Rango del huésped
+ *                 example: "Standard"
+ *               guest_details:
+ *                 type: string
+ *                 description: Detalles adicionales sobre el huésped (opcional)
+ *                 example: "Sin detalles adicionales"
+ *     responses:
+ *       201:
+ *         description: Guest creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Guest creado exitosamente"
+ *                 guest:
+ *                   $ref: '#/components/schemas/Guest'
+ *       401:
+ *         description: No autorizado, falta o token no válido
+ *       500:
+ *         description: Error en la creación del guest
+ */
+router.post("/", auth, createGuest);
 
 /**
  * @swagger

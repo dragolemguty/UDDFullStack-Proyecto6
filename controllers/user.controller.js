@@ -1,5 +1,32 @@
 const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
+const mongoose = require("mongoose");
+
+const createInitialUser = async (req, res) => {
+  try {
+    // Hashea la contraseña (asegúrate de ajustar la contraseña según tus necesidades)
+    const hashedPassword = await bcryptjs.hash("123", 10);
+
+    const initialUser = new User({
+      _id: new mongoose.Types.ObjectId("66fb68ba3d5eb488200c7917"), // Asigna manualmente el _id
+      name: "JuanJo",
+      username: "dragolem",
+      password: hashedPassword,
+      active: false
+    });
+
+    // Guarda el usuario en la base de datos
+    await initialUser.save();
+    res.json({ ok: true, description: "Usuario inicial creado correctamente", user: initialUser });
+  } catch (error) {
+    if (error.code === 11000) {
+      res.status(409).json({ message: "El usuario inicial ya existe con este _id" });
+    } else {
+      console.error(error);
+      res.status(500).json({ message: "Error creando el usuario inicial" });
+    }
+  }
+};
 
 const findAll = async (req, res) => {
    try {
@@ -61,4 +88,4 @@ const remove = async (req, res) => {
   }
 }
 
-module.exports = { create, update, remove, findAll, findOne };
+module.exports = {createInitialUser, create, update, remove, findAll, findOne };

@@ -146,66 +146,72 @@ const swaggerOptions = {
                         }
                     }
                     },
-                    Guest: {
-                        type: "object",
-                        required: [
-                            "id_guest",
-                            "guest_name",
-                            "guest_lastname",
-                            "gender",
-                            "birth_date",
-                            "register_date",
-                            "guest_rank"
-                        ],
-                        properties: {
-                            id_guest: {
-                            type: "integer",
-                            description: "ID del huésped"
-                            },
-                            guest_name: {
-                            type: "string",
-                            description: "Nombre del huésped"
-                            },
-                            guest_lastname: {
-                            type: "string",
-                            description: "Apellido del huésped"
-                            },
-                            gender: {
-                            type: "string",
-                            description: "Género del huésped"
-                            },
-                            birth_date: {
-                            type: "string",
-                            format: "date",
-                            description: "Fecha de nacimiento"
-                            },
-                            contact_number: {
-                            type: "string",
-                            description: "Número de contacto (opcional)"
-                            },
-                            DNI_number: {
-                            type: "string",
-                            description: "Número de DNI (opcional)"
-                            },
-                            guest_adress: {
-                            type: "string",
-                            description: "Dirección del huésped (opcional)"
-                            },
-                            register_date: {
-                            type: "string",
-                            format: "date",
-                            description: "Fecha de registro del huésped"
-                            },
-                            guest_rank: {
-                            type: "string",
-                            description: "Rango del huésped"
-                            },
-                            guest_details: {
-                            type: "string",
-                            description: "Detalles adicionales del huésped (opcional)"
-                            }
-                        }
+                    "Guest": {
+                      "type": "object",
+                      "required": [
+                        "id_guest",
+                        "guest_name",
+                        "guest_lastname",
+                        "gender",
+                        "birth_date",
+                        "register_date",
+                        "guest_rank",
+                        "user"
+                      ],
+                      "properties": {
+                        "id_guest": {
+                          "type": "integer",
+                          "description": "ID del huésped"
                         },
+                        "guest_name": {
+                          "type": "string",
+                          "description": "Nombre del huésped"
+                        },
+                        "guest_lastname": {
+                          "type": "string",
+                          "description": "Apellido del huésped"
+                        },
+                        "gender": {
+                          "type": "string",
+                          "description": "Género del huésped"
+                        },
+                        "birth_date": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Fecha de nacimiento"
+                        },
+                        "contact_number": {
+                          "type": "string",
+                          "description": "Número de contacto (opcional)"
+                        },
+                        "DNI_number": {
+                          "type": "string",
+                          "description": "Número de DNI (opcional)"
+                        },
+                        "guest_adress": {
+                          "type": "string",
+                          "description": "Dirección del huésped (opcional)"
+                        },
+                        "register_date": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Fecha de registro del huésped"
+                        },
+                        "guest_rank": {
+                          "type": "string",
+                          "description": "Rango del huésped"
+                        },
+                        "guest_details": {
+                          "type": "string",
+                          "description": "Detalles adicionales del huésped (opcional)"
+                        },
+                        "user": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "ID de referencia al usuario asociado"
+                        }
+                      }
+                    },
                         User: {
                             type: "object",
                             required: ["name", "username", "password", "active"],
